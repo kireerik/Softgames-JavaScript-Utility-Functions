@@ -1,9 +1,10 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
-const toBinary = (num) =>
-    ('000000000' + (num >>> 0).toString(2)).substr(-8)
 
 define(function() {
+  const toBinary = (num) =>
+      ('000000000' + (num >>> 0).toString(2)).substr(-8)
+
   return {
     valueAtBit: function(num, bit) {
         return parseInt(toBinary(num).split('')[8 - bit])

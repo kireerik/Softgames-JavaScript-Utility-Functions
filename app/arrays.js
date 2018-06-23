@@ -1,15 +1,16 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
-const remove = (arr, item) => {
-    const getIndex = () => arr.indexOf(item)
-
-    for (var index = getIndex(); index != -1; index = getIndex())
-        arr.splice(index, 1)
-
-    return arr
-}
 
 define(function() {
+  const remove = (arr, item) => {
+      const getIndex = () => arr.indexOf(item)
+
+      for (var index = getIndex(); index != -1; index = getIndex())
+          arr.splice(index, 1)
+
+      return arr
+  }
+
   return {
     indexOf : function(arr, item) {
         return arr.indexOf(item)
