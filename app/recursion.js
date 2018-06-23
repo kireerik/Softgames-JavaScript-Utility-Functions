@@ -4,12 +4,10 @@ define(function() {
   return {
     listFiles: function listFiles(data, dirName) {
         return data.files.reduce((result, item) => {
-            result.push(...(
-                typeof item.files != 'undefined' ?
-                    listFiles(item)
-                :
-                    [item]
-            ))
+            if (typeof item.files != 'undefined')
+                result.push(...listFiles(item))
+            else
+                result.push(item)
 
             return result
         }, [])
