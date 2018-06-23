@@ -23,8 +23,9 @@ define(function() {
             this[otherIndex] = valueAtIndex
         }
 
-        const length = arr.length
         var result = [arr.slice()]
+
+        const length = arr.length
 
         for (let i = 1, heap = new Array(length).fill(0)
             ; i < length
@@ -40,6 +41,25 @@ define(function() {
             }
 
         return result
+
+        /*var result = []
+
+        ;(function permutation(array, n) {
+            if (n == 1)
+                result.push(array.slice())
+            else {
+                const nextN = n - 1
+
+                for (var i = 0; i < nextN; i++) {
+                    permutation(array, nextN)
+                    array.swap(Number(!(n % 2)) && i, nextN)
+                }
+
+                permutation(array, nextN)
+            }
+        })(arr, arr.length)
+
+        return result*/
     }
   };
 });
