@@ -6,8 +6,8 @@ define([ 'jquery' ], function($) {
         return value
     },
 
-    manipulateRemoteData : function(url) {
-
+    manipulateRemoteData : async function(url) {
+        return (await (await fetch(url)).json()).people.map(({name}) => name).sort()
     }
   };
 });
