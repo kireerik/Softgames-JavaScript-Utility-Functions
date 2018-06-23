@@ -28,43 +28,63 @@ define(function() {
     },
 
     append : function(arr, item) {
+        arr.push(item)
 
+        return arr
     },
 
     truncate : function(arr) {
+        arr.pop()
 
+        return arr
     },
 
     prepend : function(arr, item) {
+        arr.unshift(item)
 
+        return arr
     },
 
     curtail : function(arr) {
+        arr.shift()
 
+        return arr
     },
 
     concat : function(arr1, arr2) {
-
+        return arr1.concat(arr2)
     },
 
     insert : function(arr, item, index) {
+        arr.splice(index, 0, item)
 
+        return arr
     },
 
     count : function(arr, item) {
-
+        return arr.filter(value => value == item).length
     },
 
     duplicates : function(arr) {
+        return arr.reduce((result, value, index) => {
+            if (arr.indexOf(value) != index && !result.includes(value))
+                result.push(value)
 
+            return result
+        }, [])
     },
 
     square : function(arr) {
-
+        return arr.map(value => Math.pow(value, 2))
     },
 
     findAllOccurrences : function(arr, target) {
+        return arr.reduce((result, value, index) => {
+            if (value == target)
+                result.push(index)
 
+            return result
+        }, [])
     }
   };
 });
