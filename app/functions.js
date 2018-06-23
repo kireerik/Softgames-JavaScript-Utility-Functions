@@ -1,6 +1,13 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
 define(function() {
+  getFunctionArguments = (arguments) => {
+      var functionArguments = [...arguments]
+          functionArguments.shift()
+
+      return functionArguments
+  }
+
   return {
     argsAsArray : function(fn, arr) {
         return fn(...arr)
@@ -31,20 +38,15 @@ define(function() {
     },
 
     callIt : function() {
-        var functionArguments = [...arguments]
-        functionArguments.shift()
-
-        return arguments[0](...functionArguments)
+        return arguments[0](...getFunctionArguments(arguments))
     },
 
     partialUsingArguments : function() {
         const mainFunction = arguments[0]
-
-        var functionArguments = [...arguments]
-        functionArguments.shift()
+        , functionArguments = arguments
 
         return function() {
-            return mainFunction(...functionArguments, ...arguments)
+            return mainFunction(...getFunctionArguments(functionArguments), ...arguments)
         }
     },
 
