@@ -15,9 +15,11 @@
     "mocha": "1.2.x",
     "requirejs": "1.0.x",
     "grunt-contrib-livereload": "~0.1.2",
-    "grunt-contrib-watch": "~0.4.4"
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-cli": "1.x"
   },
   "scripts": {
+    "dev": "grunt develop",
     "start": "node bin/serve",
     "test": "./node_modules/mocha/bin/mocha -R spec tests/runner.js"
   },
