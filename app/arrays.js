@@ -1,5 +1,14 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
+const remove = (arr, item) => {
+    const getIndex = () => arr.indexOf(item)
+
+    for (var index = getIndex(); index != -1; index = getIndex())
+        arr.splice(index, 1)
+
+    return arr
+}
+
 define(function() {
   return {
     indexOf : function(arr, item) {
@@ -11,17 +20,11 @@ define(function() {
     },
 
     remove : function(arr, item) {
-        while (arr.indexOf(item) != -1)
-            arr.splice(arr.indexOf(item), 1)
-
-        return arr
+        return remove(arr, item)
     },
 
     removeWithoutCopy : function(arr, item) {
-        while (arr.indexOf(item) != -1)
-            arr.splice(arr.indexOf(item), 1)
-
-        return arr
+        return remove(arr, item)
     },
 
     append : function(arr, item) {
