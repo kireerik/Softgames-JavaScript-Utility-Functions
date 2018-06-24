@@ -51,7 +51,7 @@ define(function() {
     },
 
     curryIt : function(fn) {
-
+        return x => y => z => fn(x, y, z)
     }
   };
 });
