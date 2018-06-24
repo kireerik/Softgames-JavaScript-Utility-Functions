@@ -9,11 +9,11 @@ define(function() {
   }
 
   return {
-    argsAsArray : function(fn, arr) {
+    argsAsArray: function(fn, arr) {
       return fn(...arr)
     },
 
-    speak : function(fn, obj) {
+    speak: function(fn, obj) {
       Object.entries(obj).forEach((object) =>
         this[object[0]] = object[1]
       )
@@ -21,27 +21,27 @@ define(function() {
       return fn.call(this)
     },
 
-    functionFunction : function(str) {
+    functionFunction: function(str) {
       return str2 => str + ', ' + str2
     },
 
-    makeClosures : function(arr, fn) {
+    makeClosures: function(arr, fn) {
       return arr.map(number => () => Math.pow(number, 2))
     },
 
-    partial : function(fn, str1, str2) {
+    partial: function(fn, str1, str2) {
       return part => fn(str1, str2, part)
     },
 
-    useArguments : function() {
+    useArguments: function() {
       return [...arguments].reduce((sum, argument) => sum + argument)
     },
 
-    callIt : function() {
+    callIt: function() {
       return arguments[0](...getFunctionArguments(arguments))
     },
 
-    partialUsingArguments : function() {
+    partialUsingArguments: function() {
       const mainFunction = arguments[0]
       , functionArguments = arguments
 
@@ -50,7 +50,7 @@ define(function() {
       }
     },
 
-    curryIt : function(fn) {
+    curryIt: function(fn) {
       return x => y => z => fn(x, y, z)
     }
   };
