@@ -42,24 +42,29 @@ define(function() {
 
         return result
 
-        /*var result = []
+        /*Array.prototype.permutation = function permutation(array, n) {
+            array = array || this
+            n = n || array.length
 
-        ;(function permutation(array, n) {
+            var result = []
+
             if (n == 1)
-                result.push(array.slice())
+                result = [array.slice()]
             else {
                 const nextN = n - 1
 
                 for (var i = 0; i < nextN; i++) {
-                    permutation(array, nextN)
+                    result.push(...permutation(array, nextN))
                     array.swap(Number(!(n % 2)) && i, nextN)
                 }
 
-                permutation(array, nextN)
+                result.push(...permutation(array, nextN))
             }
-        })(arr, arr.length)
 
-        return result*/
+            return result
+        }
+
+        return arr.permutation()*/
     }
   };
 });
