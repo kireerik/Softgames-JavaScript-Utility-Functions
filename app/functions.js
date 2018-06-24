@@ -26,11 +26,11 @@ define(function() {
     },
 
     makeClosures : function(arr, fn) {
-
+        return arr.map(number => () => Math.pow(number, 2))
     },
 
     partial : function(fn, str1, str2) {
-
+        return part => fn(str1, str2, '') + part
     },
 
     useArguments : function() {
