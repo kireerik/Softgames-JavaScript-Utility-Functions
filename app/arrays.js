@@ -1,91 +1,90 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
-
 define(function() {
   const remove = (arr, item) => {
-      const getIndex = () => arr.indexOf(item)
+    const getIndex = () => arr.indexOf(item)
 
-      for (var index = getIndex(); index != -1; index = getIndex())
-          arr.splice(index, 1)
+    for (var index = getIndex(); index != -1; index = getIndex())
+      arr.splice(index, 1)
 
-      return arr
+    return arr
   }
 
   return {
     indexOf : function(arr, item) {
-        return arr.indexOf(item)
+      return arr.indexOf(item)
     },
 
     sum : function(arr) {
-        return arr.reduce((sum, value) => sum + value)
+      return arr.reduce((sum, value) => sum + value)
     },
 
     remove : function(arr, item) {
-        return remove(arr, item)
+      return remove(arr, item)
     },
 
     removeWithoutCopy : function(arr, item) {
-        return remove(arr, item)
+      return remove(arr, item)
     },
 
     append : function(arr, item) {
-        arr.push(item)
+      arr.push(item)
 
-        return arr
+      return arr
     },
 
     truncate : function(arr) {
-        arr.pop()
+      arr.pop()
 
-        return arr
+      return arr
     },
 
     prepend : function(arr, item) {
-        arr.unshift(item)
+      arr.unshift(item)
 
-        return arr
+      return arr
     },
 
     curtail : function(arr) {
-        arr.shift()
+      arr.shift()
 
-        return arr
+      return arr
     },
 
     concat : function(arr1, arr2) {
-        return arr1.concat(arr2)
+      return arr1.concat(arr2)
     },
 
     insert : function(arr, item, index) {
-        arr.splice(index, 0, item)
+      arr.splice(index, 0, item)
 
-        return arr
+      return arr
     },
 
     count : function(arr, item) {
-        return arr.filter(value => value == item).length
+      return arr.filter(value => value == item).length
     },
 
     duplicates : function(arr) {
-        return arr.reduce((result, value, index) => {
-            if (arr.indexOf(value) != index && !result.includes(value))
-                result.push(value)
+      return arr.reduce((result, value, index) => {
+        if (arr.indexOf(value) != index && !result.includes(value))
+          result.push(value)
 
-            return result
-        }, [])
+        return result
+      }, [])
     },
 
     square : function(arr) {
-        return arr.map(value => Math.pow(value, 2))
+      return arr.map(value => Math.pow(value, 2))
     },
 
     findAllOccurrences : function(arr, target) {
-        return arr.reduce((result, value, index) => {
-            if (value == target)
-                result.push(index)
+      return arr.reduce((result, value, index) => {
+        if (value == target)
+          result.push(index)
 
-            return result
-        }, [])
+        return result
+      }, [])
     }
   };
 });
