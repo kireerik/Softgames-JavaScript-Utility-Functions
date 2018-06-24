@@ -3,12 +3,12 @@ if (typeof define !== 'function') { var define = require('amdefine')(module); }
 define(function () {
   return {
     count: function (start, end) {
-      var execute = true
+      var execute = true, timeout = function (resolve) {setTimeout(resolve, 100)};
 
-      ;(async () => {
-        for (var i = start; i <= end && execute; i++, await new Promise(resolve => setTimeout(resolve, 100)))
-          console.log(i)
-      })()
+      (async function () {
+        for (var i = start; i <= end && execute; i++, await new Promise(timeout))
+          console.log(i);
+      })();
 
       return {
         cancel: () => execute = false

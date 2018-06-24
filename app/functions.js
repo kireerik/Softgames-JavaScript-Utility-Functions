@@ -1,57 +1,58 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
 define(function() {
-  getFunctionArguments = (arguments) => {
-    var functionArguments = [...arguments]
-      functionArguments.shift()
+  var getFunctionArguments = function (functionArguments) {
+    var result = [...functionArguments];
+    result.shift();
 
-    return functionArguments
-  }
+    return result;
+  };
 
   return {
     argsAsArray: function(fn, arr) {
-      return fn(...arr)
+      return fn(...arr);
     },
 
     speak: function(fn, obj) {
-      Object.entries(obj).forEach((object) =>
-        this[object[0]] = object[1]
-      )
+      var currentThis = this;
 
-      return fn.call(this)
+      Object.entries(obj).forEach(function (object) {
+        currentThis[object[0]] = object[1];
+      });
+
+      return fn.call(this);
     },
 
     functionFunction: function(str) {
-      return str2 => str + ', ' + str2
+      return function (str2) {return str + ', ' + str2;};
     },
 
     makeClosures: function(arr, fn) {
-      return arr.map(number => () => Math.pow(number, 2))
+      return arr.map(function (number) {return function () {return Math.pow(number, 2);};});
     },
 
     partial: function(fn, str1, str2) {
-      return part => fn(str1, str2, part)
+      return function (part) {return fn(str1, str2, part);};
     },
 
     useArguments: function() {
-      return [...arguments].reduce((sum, argument) => sum + argument)
+      return [...arguments].reduce(function (sum, argument) {return sum + argument;});
     },
 
     callIt: function() {
-      return arguments[0](...getFunctionArguments(arguments))
+      return arguments[0](...getFunctionArguments(arguments));
     },
 
     partialUsingArguments: function() {
-      const mainFunction = arguments[0]
-      , functionArguments = arguments
+      var mainFunction = arguments[0], functionArguments = arguments;
 
       return function() {
-        return mainFunction(...getFunctionArguments(functionArguments), ...arguments)
-      }
+        return mainFunction(...getFunctionArguments(functionArguments), ...arguments);
+      };
     },
 
     curryIt: function(fn) {
-      return x => y => z => fn(x, y, z)
+      return function (x) {return function (y) {return function (z) {return fn(x, y, z);};};};
     }
   };
 });

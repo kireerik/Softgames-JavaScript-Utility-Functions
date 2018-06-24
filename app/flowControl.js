@@ -11,12 +11,12 @@ define(function() {
       //
       // otherwise the function should return the number, or false if no number
       // was provided or the value provided is not a number
-      const result = Number.isInteger(num) ?
-        (!(num % 3) ? 'fizz' : '') + (!(num % 5) ? 'buzz' : '')
+      var not = function (value) {return !value;}, result = Number.isInteger(num) ?
+        (not(num % 3) ? 'fizz' : '') + (not(num % 5) ? 'buzz' : '')
       :
-        false
+        false;
 
-      return result !== '' ? result : num
+      return result !== '' ? result : num;
     }
   };
 });
