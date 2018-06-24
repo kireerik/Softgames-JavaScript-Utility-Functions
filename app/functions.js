@@ -1,9 +1,9 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
 
 define(function() {
-  getFunctionArguments = (arguments) => {
+  const getFunctionArguments = (arguments) => {
     var functionArguments = [...arguments]
-      functionArguments.shift()
+    functionArguments.shift()
 
     return functionArguments
   }
