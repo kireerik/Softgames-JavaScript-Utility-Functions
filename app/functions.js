@@ -30,7 +30,7 @@ define(function() {
     },
 
     partial : function(fn, str1, str2) {
-        return part => fn(str1, str2, '') + part
+        return part => fn(str1, str2, part)
     },
 
     useArguments : function() {
